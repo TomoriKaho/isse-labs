@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊一聊 · AI 聊天</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">聊</span>
+          <div>
+            <p class="eyebrow">AI 聊天</p>
+            <h1>聊一聊</h1>
+          </div>
+        </div>
+        <span class="preview-badge">DeepSeek 对话</span>
+      </header>
+
+      <div class="workspace">
+      <aside class="conversation-panel" aria-labelledby="conversations-heading">
+        <h2 id="conversations-heading">我的会话</h2>
+        <form id="conversation-form" class="conversation-form" novalidate>
+          <label for="conversation-title">新会话名称</label>
+          <input id="conversation-title" name="title" maxlength="100" placeholder="例如：旅行计划" required disabled>
+          <button id="create-conversation-button" class="send-button" type="submit" disabled>新建会话</button>
+        </form>
+        <nav id="conversation-list" class="conversation-list" aria-label="选择聊天会话">
+          <p class="sidebar-hint">正在加载会话…</p>
+        </nav>
+      </aside>
+
+      <section class="chat-panel" aria-labelledby="chat-heading">
+        <div class="panel-heading">
+          <div>
+            <h2 id="chat-heading">选择或新建会话</h2>
+            <p>每个会话独立保存，围绕同一个话题继续聊。</p>
+            <div class="conversation-tools">
+              <button id="rename-conversation-button" class="text-button" type="button" disabled>重命名会话</button>
+              <button id="delete-conversation-button" class="text-button delete-button" type="button" disabled>删除会话</button>
+            </div>
+          </div>
+          <div class="list-tools">
+            <span id="record-count" class="section-label">聊天记录</span>
+            <button id="reload-button" class="text-button" type="button">刷新列表</button>
+          </div>
+        </div>
+
+        <div id="conversation-editor"></div>
+        <p id="status-message" class="status-message" role="status" aria-atomic="true"></p>
+        <div id="message-list" class="message-list" aria-live="polite">
+          <p class="empty-state">正在加载聊天记录…</p>
+        </div>
+        <noscript><p class="status-message is-error">请启用 JavaScript 后使用聊天功能。</p></noscript>
+
+        <form id="message-form" class="composer" aria-labelledby="composer-heading" novalidate>
+          <label id="composer-heading" for="message-input">写下你的问题</label>
+          <textarea
+            id="message-input"
+            name="message"
+            rows="3"
+            maxlength="4000"
+            placeholder="有什么想聊的？"
+            aria-describedby="composer-help"
+            required
+            disabled
+          ></textarea>
+          <div class="composer-footer">
+            <p id="composer-help">最多 4000 字；回答会参考本会话最近 10 轮问答。</p>
+            <button id="send-button" class="send-button" type="submit" disabled>发送消息 <span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+      </section>
+      </div>
+
+      <footer class="app-footer">聊天记录保存在当前容器中；本实验不提供持久化，容器重建或删除后记录可能丢失。</footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/
+data copy/
+*.log
+.DS_Store
+.git/
+.gitignore
+AGENT_TRACE.md
+screenshots/
+README.md
